@@ -140,7 +140,7 @@ Login:
 
 ##  Monitoring Dashboard
 
-![Kubernetes Dashboard](docs/grafana-dashboard.png)
+ ## ![Kubernetes Dashboard](docs/grafana-dashboard.png)
 
 ---
 
