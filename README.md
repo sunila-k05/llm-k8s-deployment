@@ -1,15 +1,15 @@
 #  Deploying an Open Source LLM on Kubernetes (Ollama + Mistral)
 
-This project demonstrates how to deploy an open-source Large Language Model (LLM) inside a Kubernetes cluster, monitor it using Prometheus and Grafana, and interact with it via a simple chatbot UI.
+This project demonstrates how to deploy an open-source Large Language Model (LLM) inside a Kubernetes cluster, monitor it using Prometheus and Grafana, and interact with it through a simple chatbot UI.
 
 ---
 
 ##  Tech Stack
 
- Kubernetes (Minikube)
- Ollama (Mistral model)
- Prometheus + Grafana (Monitoring)
- HTML + JavaScript (Chatbot UI)
+* Kubernetes (Minikube)
+* Ollama (Mistral model)
+* Prometheus + Grafana (Monitoring)
+* HTML + JavaScript (Chatbot UI)
 
 ---
 
@@ -25,12 +25,13 @@ User → Chat UI → Ollama API → Kubernetes Pod → LLM
 llm-k8s-deployment/
 │
 ├── k8s/
-│   └── ollama.yaml        # Kubernetes deployment + service
+│   └── ollama.yaml        # Kubernetes Deployment & Service
 │
 ├── ui/
-│   └── index.html         # Simple chatbot UI
+│   └── index.html         # Chatbot UI
 │
-├── docs/                  # Screenshots (optional)
+├── docs/
+│   └── grafana-dashboard.png  # Monitoring screenshot
 │
 └── README.md
 ```
@@ -54,7 +55,7 @@ kubectl create namespace ollama
 kubectl apply -f k8s/ollama.yaml
 ```
 
-Check pods:
+Verify deployment:
 
 ```bash
 kubectl get pods -n ollama
@@ -62,7 +63,7 @@ kubectl get pods -n ollama
 
 ---
 
-### 3. Load Model inside Pod
+### 3. Load LLM Model inside Pod
 
 ```bash
 POD=$(kubectl get pods -n ollama -l app=ollama -o jsonpath='{.items[0].metadata.name}')
@@ -72,7 +73,7 @@ kubectl exec -it $POD -n ollama -- ollama pull mistral
 
 ---
 
-### 4. Expose API
+### 4. Expose LLM API
 
 ```bash
 kubectl port-forward svc/ollama 11434:11434 -n ollama
@@ -105,7 +106,7 @@ http://localhost:8080
 
 ---
 
-##  Monitoring (Prometheus + Grafana)
+##  Monitoring with Prometheus & Grafana
 
 Install monitoring stack:
 
@@ -130,10 +131,16 @@ Open:
 http://localhost:3000
 ```
 
-Default login:
+Login:
 
-* Username: admin
-* Password: (retrieve via Kubernetes secret or reset)
+* Username: `admin`
+* Password: Retrieve from Kubernetes secret or reset manually
+
+---
+
+##  Monitoring Dashboard
+
+![Kubernetes Dashboard](docs/grafana-dashboard.png)
 
 ---
 
@@ -142,8 +149,7 @@ Default login:
 * Node CPU usage
 * Memory usage
 * Pod health and status
-
-
+* Cluster activity and workload
 
 ---
 
@@ -152,35 +158,31 @@ Default login:
 * Model not detected via API initially
 * Kubernetes resource constraints (memory limits)
 * Model persistence issues inside pods
-* Debugging API endpoints (`/api/generate` vs `/api/chat`)
-
----
-
-##  Demo Video
-
-soon..
-
----
-
-##  Blog
-
-soon..
+* API differences (`/api/chat` vs `/api/generate`)
 
 ---
 
 ##  Key Learnings
 
- Deploying LLM workloads in Kubernetes
- Managing containerized AI models
- Monitoring infrastructure using Prometheus and Grafana
- Debugging real-world DevOps issues
+* Deploying LLM workloads in Kubernetes environments
+* Managing containerized AI models using Ollama
+* Implementing observability using Prometheus and Grafana
+* Debugging real-world infrastructure and API issues
+
+---
+
+##  Demo Video
+
+*Soon*
+
+---
+
+##  Blog
+
+*Soon*
 
 ---
 
 ##  Conclusion
 
-This project shows how open source LLMs can be deployed and managed efficiently using Kubernetes, with observability and a simple UI for interaction.
-
-
-
-## [Kubernetes Dashboard](docs/grafana-dashboard.png)
+This project demonstrates how open-source LLMs can be deployed, monitored, and accessed efficiently using Kubernetes. It highlights the importance of observability and simplicity when building scalable AI systems.
