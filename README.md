@@ -137,7 +137,7 @@ Default login:
 
 ---
 
-## 📈 What is Monitored
+##  What is Monitored
 
 * Node CPU usage
 * Memory usage
