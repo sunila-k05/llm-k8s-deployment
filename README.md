@@ -142,7 +142,7 @@ Default login:
 * Node CPU usage
 * Memory usage
 * Pod health and status
-* ![Kubernetes Dashboard](docs/grafana-dashboard.png)
+
 
 
 ---
@@ -180,3 +180,7 @@ soon..
 ##  Conclusion
 
 This project shows how open source LLMs can be deployed and managed efficiently using Kubernetes, with observability and a simple UI for interaction.
+
+
+
+![Kubernetes Dashboard](docs/grafana-dashboard.png)
