@@ -183,4 +183,4 @@ This project shows how open source LLMs can be deployed and managed efficiently 
 
 
 
-![Kubernetes Dashboard](docs/grafana-dashboard.png)
+[Kubernetes Dashboard](docs/grafana-dashboard.png)
