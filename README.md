@@ -142,7 +142,8 @@ Default login:
 * Node CPU usage
 * Memory usage
 * Pod health and status
-![Grafana Dashboard](docs/grafana-dashboard.png) 
+* ![Kubernetes Dashboard](docs/grafana-dashboard.png)
+
 
 ---
 
